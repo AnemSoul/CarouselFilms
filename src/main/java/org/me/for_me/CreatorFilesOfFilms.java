@@ -17,7 +17,7 @@ public class CreatorFilesOfFilms {
   static String nowChoiceFilm;
 
   public static ArrayList<String> createListOfFileForWatch() throws FileNotFoundException {
-    File filmsListForWatch = new File("src/main/resources/TXT/Films.txt");
+    File filmsListForWatch = new File("Films.txt");
     Scanner in = new Scanner(filmsListForWatch);
     while ((in.hasNextLine())) {
       allFilms.add(in.nextLine());
@@ -36,13 +36,13 @@ public class CreatorFilesOfFilms {
   }
 
   public static void createFileWithFilmForWatchNow() throws IOException {
-    FileWriter newFileWithOneFilmForWatchNow = new FileWriter("src/main/resources/TXT/NowWatch.txt");
+    FileWriter newFileWithOneFilmForWatchNow = new FileWriter("NowWatch.txt");
     newFileWithOneFilmForWatchNow.write(String.valueOf(nowChoiceFilm));
     newFileWithOneFilmForWatchNow.close();
   }
 
   public static void createFileWithListOfFilmsToWatchNext() throws IOException {
-    FileWriter newFileWithListOfFilmsToWatchNext = new FileWriter("src/main/resources/TXT/Films.txt");
+    FileWriter newFileWithListOfFilmsToWatchNext = new FileWriter("Films.txt");
     outString = "";
     for (int i = 0; i < allFilms.size(); i++) {
       if (i != nowChoiceNumber && i != allFilms.size() - 1) {

@@ -25,11 +25,13 @@ public class RenderListForWatchAndButton {
 
   public static void renderTopMenu() throws FileNotFoundException {
 
+    CreatorFilesOfFilms creatorFilesOfFilms = new CreatorFilesOfFilms();
+
     panel = new JPanel();
     panel.setBorder(BorderFactory.createTitledBorder("Список фильмов:"));
     mainPanel = new JPanel();
 
-    data = CreatorFilesOfFilms.createListOfFileForWatch().toArray(new String[0]);
+    data = creatorFilesOfFilms.createListOfFileForWatch().toArray(new String[0]);
     JList list = new JList(data);
     list.setOpaque(true);
     list.setFont(new Font("Dialog", Font.BOLD, 14));
