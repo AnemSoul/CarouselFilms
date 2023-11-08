@@ -11,12 +11,11 @@ import java.util.Random;
 import java.util.Scanner;
 public class CreatorFilesOfFilms {
 
-  static ArrayList<String> allFilms = new ArrayList<>();
-  static String outString;
   static int nowChoiceNumber;
   static String nowChoiceFilm;
 
   public static ArrayList<String> createListOfFileForWatch() throws FileNotFoundException {
+    ArrayList<String> allFilms = new ArrayList<>();
     File filmsListForWatch = new File("Films.txt");
     Scanner in = new Scanner(filmsListForWatch);
     while ((in.hasNextLine())) {
@@ -26,6 +25,7 @@ public class CreatorFilesOfFilms {
   }
 
   public static String choiceTheFilm() throws IOException {
+    ArrayList<String> allFilms = new ArrayList<>(createListOfFileForWatch());
     Random ChoiceNumberOfRandom = new Random();
     nowChoiceNumber = ChoiceNumberOfRandom.nextInt(allFilms.size());
     String nowFilmWatch = allFilms.get(nowChoiceNumber);
@@ -42,8 +42,9 @@ public class CreatorFilesOfFilms {
   }
 
   public static void createFileWithListOfFilmsToWatchNext() throws IOException {
+    ArrayList<String> allFilms = new ArrayList<>(createListOfFileForWatch());
     FileWriter newFileWithListOfFilmsToWatchNext = new FileWriter("Films.txt");
-    outString = "";
+    String outString = "";
     for (int i = 0; i < allFilms.size(); i++) {
       if (i != nowChoiceNumber && i != allFilms.size() - 1) {
         outString += allFilms.get(i) + "\n";
