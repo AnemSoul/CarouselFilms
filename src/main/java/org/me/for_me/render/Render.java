@@ -10,7 +10,8 @@ public class Render {
     renderListForWatchAndButton.renderTopMenu();
     renderListForWatchAndButton.addTopMenuInFrame();
 
-    RenderNameTheFilmForWatch.renderBottomMenu();
-    RenderNameTheFilmForWatch.addBottomMenuInFrame();
+    RenderNameTheFilmForWatch renderNameTheFilmForWatch = new RenderNameTheFilmForWatch();
+    renderNameTheFilmForWatch.renderBottomMenu();
+    renderNameTheFilmForWatch.addBottomMenuInFrame();
   }
 }

@@ -10,33 +10,37 @@ import javax.swing.JPanel;
 
 public class RenderNameTheFilmForWatch {
 
-  static JPanel bottomPanel;
-  static JPanel mainPanel;
-  static JFrame frame;
-  static String chosenFilm;
   static JLabel film;
 
-  public static void renderBottomMenu() throws FileNotFoundException {
-    RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
-
-    mainPanel = renderListForWatchAndButton.renderTopMenu();
-
-    chosenFilm = "Нажмите Choice для выбора фильма!";
-    bottomPanel = new JPanel();
-    bottomPanel.setBorder(BorderFactory.createTitledBorder("Выбранный фильм:"));
+  public JLabel renderChosenFilmLabel() {
+    String chosenFilm = "Нажмите Choice для выбора фильма!";
     film = new JLabel(chosenFilm);
+    return film;
+  }
+  public JPanel renderBottomMenu() throws FileNotFoundException {
+    RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
+    RenderNameTheFilmForWatch renderNameTheFilmForWatch = new RenderNameTheFilmForWatch();
+
+    JPanel mainPanel = renderListForWatchAndButton.renderTopMenu();
+
+    JPanel bottomPanel = new JPanel();
+    bottomPanel.setBorder(BorderFactory.createTitledBorder("Выбранный фильм:"));
 
     bottomPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
     bottomPanel.setSize(700, 250);
-    bottomPanel.add(film);
+    bottomPanel.add(renderNameTheFilmForWatch.renderChosenFilmLabel());
     mainPanel.add(bottomPanel, BorderLayout.AFTER_LINE_ENDS);
+
+    return mainPanel;
   }
 
-  public static void addBottomMenuInFrame() throws FileNotFoundException {
+  public JFrame addBottomMenuInFrame() throws FileNotFoundException {
     RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
-    frame = renderListForWatchAndButton.addTopMenuInFrame();
-    frame.getContentPane().add(mainPanel);
+    RenderNameTheFilmForWatch renderNameTheFilmForWatch = new RenderNameTheFilmForWatch();
+    JFrame frame = renderListForWatchAndButton.addTopMenuInFrame();
+    frame.getContentPane().add(renderNameTheFilmForWatch.renderBottomMenu());
     frame.setSize(700, 500);
     frame.setVisible(true);
+    return frame;
   }
 }

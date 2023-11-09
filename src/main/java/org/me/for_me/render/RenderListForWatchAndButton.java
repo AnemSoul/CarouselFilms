@@ -71,6 +71,7 @@ public class RenderListForWatchAndButton {
 
   public JButton onClickChoice() {
     CreatorFilesOfFilms creatorFilesOfFilms = new CreatorFilesOfFilms();
+    RenderNameTheFilmForWatch renderNameTheFilmForWatch = new RenderNameTheFilmForWatch();
     JButton buttonChoice = new JButton("Choice");
     buttonChoice.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
