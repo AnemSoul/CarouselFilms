@@ -1,4 +1,4 @@
-package org.me.for_me;
+package org.me.for_me.render;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,9 +16,10 @@ public class RenderNameTheFilmForWatch {
   static String chosenFilm;
   static JLabel film;
 
-  public static void renderBottomMenu() {
+  public static void renderBottomMenu() throws FileNotFoundException {
+    RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
 
-    mainPanel = RenderListForWatchAndButton.mainPanel;
+    mainPanel = renderListForWatchAndButton.renderTopMenu();
 
     chosenFilm = "Нажмите Choice для выбора фильма!";
     bottomPanel = new JPanel();
@@ -31,8 +32,9 @@ public class RenderNameTheFilmForWatch {
     mainPanel.add(bottomPanel, BorderLayout.AFTER_LINE_ENDS);
   }
 
-  public static void addBottomMenuInFrame() {
-    frame = RenderListForWatchAndButton.frame;
+  public static void addBottomMenuInFrame() throws FileNotFoundException {
+    RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
+    frame = renderListForWatchAndButton.addTopMenuInFrame();
     frame.getContentPane().add(mainPanel);
     frame.setSize(700, 500);
     frame.setVisible(true);
