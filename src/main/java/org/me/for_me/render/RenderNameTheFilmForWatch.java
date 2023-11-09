@@ -17,6 +17,7 @@ public class RenderNameTheFilmForWatch {
     film = new JLabel(chosenFilm);
     return film;
   }
+
   public JPanel renderBottomMenu() throws FileNotFoundException {
     RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
     RenderNameTheFilmForWatch renderNameTheFilmForWatch = new RenderNameTheFilmForWatch();
