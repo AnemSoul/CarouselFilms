@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class CreatorFilesOfFilms {
 
+  private static int numberOfFilm;
+
   public ArrayList<String> createListOfFileForWatch() throws FileNotFoundException {
     ArrayList<String> allFilms = new ArrayList<>();
     File filmsListForWatch = new File("Films.txt");
@@ -22,37 +24,40 @@ public class CreatorFilesOfFilms {
     return allFilms;
   }
 
-  public int filmNumber() throws FileNotFoundException {
+  public void filmNumber() throws FileNotFoundException {
     CreatorFilesOfFilms creatorFilesOfFilms = new CreatorFilesOfFilms();
     ArrayList<String> allFilms = new ArrayList<>(creatorFilesOfFilms.createListOfFileForWatch());
     Random ChoiceNumberOfRandom = new Random();
-    return ChoiceNumberOfRandom.nextInt(allFilms.size());
+    numberOfFilm = ChoiceNumberOfRandom.nextInt(allFilms.size());
   }
 
   public String choiceTheFilm() throws IOException {
-    String nowFilmWatch = createListOfFileForWatch().get(filmNumber());
+    filmNumber();
+    String nowFilmWatch = createListOfFileForWatch().get(numberOfFilm);
     in.close();
     System.out.println(nowFilmWatch);
+    FileWriter newFileWithOneFilmForWatchNow = new FileWriter("NowWatch.txt");
+    newFileWithOneFilmForWatchNow.write(nowFilmWatch);
+    newFileWithOneFilmForWatchNow.close();
     return nowFilmWatch;
   }
 
-  public void createFileWithFilmForWatchNow() throws IOException {
-    FileWriter newFileWithOneFilmForWatchNow = new FileWriter("NowWatch.txt");
-    newFileWithOneFilmForWatchNow.write(String.valueOf(filmNumber()));
-    newFileWithOneFilmForWatchNow.close();
-  }
+//  public void createFileWithFilmForWatchNow() throws IOException {
+//    FileWriter newFileWithOneFilmForWatchNow = new FileWriter("NowWatch.txt");
+//    newFileWithOneFilmForWatchNow.write(String.valueOf(choiceTheFilm()));
+//    newFileWithOneFilmForWatchNow.close();
+//  }
 
   public void createFileWithListOfFilmsToWatchNext() throws IOException {
     CreatorFilesOfFilms creatorFilesOfFilms = new CreatorFilesOfFilms();
-    int nowChoiceNumber = filmNumber();
     ArrayList<String> allFilms = new ArrayList<>(creatorFilesOfFilms.createListOfFileForWatch());
     FileWriter newFileWithListOfFilmsToWatchNext = new FileWriter("Films.txt");
     String outString = "";
     for (int i = 0; i < allFilms.size(); i++) {
-      if (i != nowChoiceNumber && i != allFilms.size() - 1) {
+      if (i != numberOfFilm && i != allFilms.size() - 1) {
         outString += allFilms.get(i) + "\n";
       }
-      if (i != nowChoiceNumber && i == allFilms.size() - 1) {
+      if (i != numberOfFilm && i == allFilms.size() - 1) {
         outString += allFilms.get(i);
       }
     }

@@ -77,7 +77,6 @@ public class RenderListForWatchAndButton {
       public void actionPerformed(ActionEvent e) {
         try {
           String film = creatorFilesOfFilms.choiceTheFilm();
-          creatorFilesOfFilms.createFileWithFilmForWatchNow();
           creatorFilesOfFilms.createFileWithListOfFilmsToWatchNext();
           RenderNameTheFilmForWatch.film.setText(film);
         } catch (IOException ex) {
