@@ -55,12 +55,14 @@ public class RenderListForWatchAndButton {
 
   public JButton onClickExit() {
     RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
+    CreatorFilesOfFilms creatorFilesOfFilms = new CreatorFilesOfFilms();
     JButton buttonExit = new JButton("Exit");
     buttonExit.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         try {
+          creatorFilesOfFilms.createFileWithListOfFilmsToWatchNext();
           renderListForWatchAndButton.addTopMenuInFrame().setVisible(false);
-        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
           throw new RuntimeException(ex);
         }
         System.exit(0);
@@ -71,13 +73,11 @@ public class RenderListForWatchAndButton {
 
   public JButton onClickChoice() {
     CreatorFilesOfFilms creatorFilesOfFilms = new CreatorFilesOfFilms();
-    RenderNameTheFilmForWatch renderNameTheFilmForWatch = new RenderNameTheFilmForWatch();
     JButton buttonChoice = new JButton("Choice");
     buttonChoice.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         try {
           String film = creatorFilesOfFilms.choiceTheFilm();
-          creatorFilesOfFilms.createFileWithListOfFilmsToWatchNext();
           RenderNameTheFilmForWatch.film.setText(film);
         } catch (IOException ex) {
           throw new RuntimeException(ex);
