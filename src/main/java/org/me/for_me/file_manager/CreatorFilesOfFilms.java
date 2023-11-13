@@ -42,12 +42,6 @@ public class CreatorFilesOfFilms {
     return nowFilmWatch;
   }
 
-//  public void createFileWithFilmForWatchNow() throws IOException {
-//    FileWriter newFileWithOneFilmForWatchNow = new FileWriter("NowWatch.txt");
-//    newFileWithOneFilmForWatchNow.write(String.valueOf(choiceTheFilm()));
-//    newFileWithOneFilmForWatchNow.close();
-//  }
-
   public void createFileWithListOfFilmsToWatchNext() throws IOException {
     CreatorFilesOfFilms creatorFilesOfFilms = new CreatorFilesOfFilms();
     ArrayList<String> allFilms = new ArrayList<>(creatorFilesOfFilms.createListOfFileForWatch());
