@@ -35,13 +35,12 @@ public class RenderNameTheFilmForWatch {
     return mainPanel;
   }
 
-  public JFrame addBottomMenuInFrame() throws FileNotFoundException {
+  public void addBottomMenuInFrame() throws FileNotFoundException {
     RenderListForWatchAndButton renderListForWatchAndButton = new RenderListForWatchAndButton();
     RenderNameTheFilmForWatch renderNameTheFilmForWatch = new RenderNameTheFilmForWatch();
     JFrame frame = renderListForWatchAndButton.addTopMenuInFrame();
     frame.getContentPane().add(renderNameTheFilmForWatch.renderBottomMenu());
     frame.setSize(700, 500);
     frame.setVisible(true);
-    return frame;
   }
 }

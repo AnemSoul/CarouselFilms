@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
 Main-Class: org.me.for_me.RunCarousel
+Class-Path: ant-launcher-1.8.3.jar annotations-24.0.1.jar ant-1.8.3.jar
 
